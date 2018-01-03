@@ -6,18 +6,21 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
-var expressValidator = require('express-validator');
 var LocalStrategy = require('passport-local').Strategy;
+var expressValidator = require('express-validator');
 var multer = require('multer');
 var upload = multer({dest:'./uploads'});
 var flash = require('connect-flash');
+var bcrypt = require('bcryptjs');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+//var confirm = require('confirm-dialog');
 var db = mongoose.connection;
 
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var students = require('./routes/students');
 
 var app = express();
 
@@ -64,12 +67,18 @@ app.use(expressValidator({
 
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
-  res.locals.message = require('express-messages')(req, res);
+  res.locals.messages = require('express-messages')(req, res);
   next();
 });
 
+app.get('*', function(req, res, next){
+  res.locals.user = req.user || null;
+  next();
+})
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/students', students);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

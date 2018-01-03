@@ -3,15 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js ./bin/www "
   },
   "dependencies": {
     "@types/mongodb": "^2.2.17",
     "@types/node": "^8.5.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
+    "browserify": "^14.5.0",
+    "classes": "^0.3.0",
     "connect-flash": "*",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "event": "^1.0.0",
     "express": "~4.15.5",
     "express-messages": "*",
     "express-session": "^1.15.6",
@@ -20,11 +25,16 @@
     "jade": "~1.11.0",
     "mongodb": "*",
     "mongoose": "*",
+    "mongoose-version": "^1.1.0",
     "morgan": "~1.9.0",
     "multer": "*",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*",
-    "serve-favicon": "~2.4.5"
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.4.5",
+    "tap-event": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.13.2"
   }
 }
