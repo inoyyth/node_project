@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  each articles, i in article
+      br
+      .jumbotron
+        h1 #{articles.title}
+        img(src='uploads/#{articles.mainimage}')
+        p #{articles.body}
+        p
+          a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
