@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+var upload = multer({dest: './public/images/uploads'});
 var mongo = require('mongodb');
 var db = require('monk')('localhost/nodeblog');
 
-var storage        = multer.diskStorage({
+/*var storage        = multer.diskStorage({
   destination: function(req, file, cb){
     cb(null, 'uploads/');
   },
@@ -24,7 +25,7 @@ var storage        = multer.diskStorage({
   }
 });
 
-var upload = multer({ storage: storage });
+var upload = multer({ storage: storage });*/
 
 router.get('/add', function(req, res, next) {
   var categories = db.get('categories');
