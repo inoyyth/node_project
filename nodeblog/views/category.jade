@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1=title
+    a.btn.btn-primary.btn-xs(href='/categories/add',style='margin-bottom:5px;') New
+    table.table.table-bordered
+        thead
+            tr
+                th.text-center(width='30') No
+                th.text-center Name
+                th.text-center Action
+        tbody
+            each categories, i in category
+                tr
+                    td #{i+1}
+                    td #{categories.name}
+                    td 
+                        center
+                            a.btn.btn-warning.btn-xs(href='/categories/update?id=#{categories._id}') Update
+                            |   
+                            a.btn.btn-danger.btn-xs(href='/categories/delete?id=#{categories._id}') Delete
+            

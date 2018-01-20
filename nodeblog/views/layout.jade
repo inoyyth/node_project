@@ -6,6 +6,7 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
   body
     .container
+      !=messages()
       img.logo(src='/images/nodebloglogo.png' height="100")
       nav
         ul
@@ -14,7 +15,7 @@ html
           li
             a(href='/posts/add') Add Post
           li
-            a(href='/categories/add') Add Category
+            a(href='/categories') Category
       block content
       footer
         p NodeBlog &copy; 2016

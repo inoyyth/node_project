@@ -42,7 +42,7 @@ app.use(session({
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(params, msg, value) {
-    var namespace = param.split('.')
+    var namespace = params.split('.')
     , root = namespace.shift()
     , formParam = root;
 
