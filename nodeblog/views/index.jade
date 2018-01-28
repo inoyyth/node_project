@@ -5,7 +5,8 @@ block content
       br
       .jumbotron
         h1 #{articles.title}
+        p.meta Posted in #{articles.category} by #{articles.author} #{moment().format('MMMM Do YYYY, h:mm:ss a')}
         img(src='/images/uploads/#{articles.mainimage}')
-        p #{articles.body}
+        !=truncateText(articles.body, 700)
         p
-          a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
+          a.btn.btn-primary.btn-lg(href='/posts/show/#{articles._id}', role='button') Learn more
