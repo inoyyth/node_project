@@ -20,6 +20,12 @@ var categories = require('./routes/categories');
 
 var app = express();
 
+app.locals.moment = moment;
+app.locals.truncateText = function(text, length) {
+  var truncatedText = text.substring(0, length);
+  return truncatedText;
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -42,7 +48,7 @@ app.use(session({
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(params, msg, value) {
-    var namespace = param.split('.')
+    var namespace = params.split('.')
     , root = namespace.shift()
     , formParam = root;
 

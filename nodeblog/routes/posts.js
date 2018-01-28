@@ -61,10 +61,14 @@ router.post('/add', upload.single('mainimage'), function(req, res, next) {
   var errors = req.validationErrors();
 
   if (errors) {
-    res.render('addpost', {
-      "errors": errors
-      //"title": title,
-      //"body": body
+    var categories = db.get('categories');
+
+    categories.find({},{}, function(err, categories){
+      res.render('addpost',{
+        'title': 'Add Post',
+        'categories': categories,
+        "errors": errors
+      });
     });
   } else {
     var posts = db.get('posts');
@@ -75,7 +79,7 @@ router.post('/add', upload.single('mainimage'), function(req, res, next) {
       "author": author,
       "date": date,
       "mainimage": mainimage
-    }, function (err, post){
+    }, function (err, posts){
         if (err) {
           res.send(err);
         } else {
